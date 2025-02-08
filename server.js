@@ -19,7 +19,7 @@ import { fileURLToPath } from "url";
 import cloudinary from "cloudinary";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-app.use(express.static(path.resolve(__dirname, "./public")));
+app.use(express.static(path.resolve(__dirname, "./client/dist")));
 
 // middle ware
 import errorHandlerMiddleware from "./middleware/errorHandlerMiddleWare.js";
@@ -45,7 +45,7 @@ app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", authenticateUser, userRouter);
 
 app.get("*",(req,res)=>{
-  res.sendFile.path(resolve(__dirname,'./public','index.html'))
+  res.sendFile.path(resolve(__dirname,'./client/dist','index.html'))
 })
 // Not found midleware
 app.use("*", (req, res) => {
